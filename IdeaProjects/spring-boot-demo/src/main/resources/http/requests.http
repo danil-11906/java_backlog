@@ -1,0 +1,12 @@
+###
+GET http://localhost/papers/search?page=1&size=3
+
+###
+
+GET http://localhost/papers/service/search?page=0
+
+###
+GET http://localhost/users
+
+###
+GET http://localhost/list

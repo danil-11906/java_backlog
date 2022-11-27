@@ -1,0 +1,12 @@
+functionals\CookiesRepositoryJdbcImpl.class
+models\User$UserBuilder.class
+servlets\SettingsPageServlet.class
+servlets\UsersServlet.class
+models\User.class
+servlets\SignInServlet.class
+interfaces\UsersRepository.class
+servlets\MainServlet.class
+functionals\UsersRepositoryJdbcImpl.class
+interfaces\CrudRepository.class
+interfaces\CookiesRepository.class
+servlets\ProfileServlet.class

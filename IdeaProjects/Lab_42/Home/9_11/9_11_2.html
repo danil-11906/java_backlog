@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: floralwhite;
+        }
+
+        .header h1 {
+            text-align: center;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: darkgray;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: darkblue;
+            width: 0px;
+        }
+
+    </style>
+</head>
+<body style="height:4000px">
+
+<div class="header">
+    <h1 style="color: red">Scroll me</h1>
+    <div class="progress-container">
+        <div class="progress-bar" id="bar"></div>
+    </div>
+</div>
+
+<script>
+
+    function toScroll() {
+        let windowScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolling = (windowScroll / height) * 100;
+        document.getElementById("bar").style.width = scrolling + '%';
+    }
+    window.onscroll = function () {
+        toScroll()
+    };
+</script>
+
+</body>
+</html>

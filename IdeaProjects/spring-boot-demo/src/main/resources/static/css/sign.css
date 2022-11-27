@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.button:hover {
+    opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    background-color: #f1f1f1;
+    text-align: center;
+}* {
+     margin: 0;
+     padding: 0;
+ }
+
+.logo {
+    color: #254c53;
+    font-size: 50px;
+    font-weight: bolder;
+    margin-left: 50px;
+    padding: 10px;
+    float: left;
+}
+
+header {
+    background-color: #91c3f6;
+    height: 100px;
+    width: 100%;
+}
+
+li {
+    display: inline-flex;
+    padding-bottom: 38px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+nav {
+    float: right;
+}
+
+.nav-menu {
+    color: #254c53;
+}
+
+.nav-menu:hover {
+    color: #ecfbf1;
+}
+
+.nav-menu,
+.nav-menu:hover {
+    justify-content: center;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    float: right;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+li:hover {
+    background-color: #7379cc;
+    border-bottom: #f79f07 solid;
+}
+
+
+.my_profile {
+    margin-left: 20px;
+}
+
+.burger_menu {
+    display: none;
+}
+
+
+.welcome_back {
+    width: 100%;
+}
+
+@media only screen and (max-width: 1315px) {
+
+    .menu li {
+        display: none;
+        background-color: #91c3f6;
+    }
+
+    .burger_menu {
+        position: absolute;
+        display: block;
+        border: #272d38 solid 2px;
+        background-color: #ecfbf1;
+        border-radius: 10%;
+        width: 40px;
+        height: 40px;
+        color: #254c53;
+        float: right;
+        margin-right: 40px;
+        top: 25px;
+        padding-top: 8px;
+        padding-left: 8px;
+        left: 90%;
+
+    }
+
+    .bm {
+        float: right;
+    }
+
+    .nav-menu {
+        display: table-column;
+        background-color: #91c3f6;
+    }
+
+    .menu.responsive {
+        position: relative;
+        background-color: #91c3f6;
+    }
+
+    header .menu.responsive {
+        width: 100%;
+        height: 400px;
+        background-color: #91c3f6;
+    }
+
+    .menu.responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+        background-color: #91c3f6;
+    }
+
+    li:hover {
+        background-color: #fff;
+        border-bottom: #f79f07 solid;
+    }
+}

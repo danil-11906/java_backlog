@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="table">
+    <tr>
+        <td id="td">Это</td>
+        <td>Все</td>
+        <td>Элементы DOM</td>
+    </tr>
+</table>
+<ol id="ol">
+    <li>Вася</li>
+    <li>Петя</li>
+    <li id="li">Маша</li>
+    <li>Даша</li>
+</ol>
+<script>
+    function removeSiblings(elem) {
+        var Elements = elem.parentNode.children
+        for (var i = 0; i < Elements.length; i++) {
+            if (Elements[i] !== elem) {
+                Elements[i].remove();
+                i--;
+            }
+        }
+    }
+
+    removeSiblings(td);
+    removeSiblings(li);
+</script>
+</body>
+</html>

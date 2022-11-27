@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .tree span:hover {
+            font-weight: bold;
+        }
+
+        .tree span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul class="tree" id="tree">
+    <li>Отдел web-разработки
+        <ul id = "hider">
+            <li>Junior
+                <ul>
+                    <li>Иванов И.И.</li>
+                    <li>Сидоров С.С.</li>
+                    <li>Петров П.П.</li>
+                </ul>
+            </li>
+            <li>Middle
+                <ul>
+                    <li>Кодов К.К.</li>
+                    <li>Текстов Т.Т.</li>
+                    <li>Пробелов З.З.</li>
+                </ul>
+            </li>
+            <li>Senior
+                <ul>
+                    <li>Штормов А.А.</li>
+                    <li>Саблаймов С.С.</li>
+                    <li>Атомов З.З.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Отдел тестирования
+        <ul id = "hider1">
+            <li>Junior
+                <ul>
+                    <li>Тестов Т.Т.</li>
+                    <li>Багов Б.Б.</li>
+                </ul>
+            </li>
+            <li>Middle
+                <ul>
+                    <li>Ошибкин О.О.</li>
+                    <li>Багов Б.Б.</li>
+                    <li>Селениумов С.С.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<script>
+    for (let li of tree.querySelectorAll('li')) {
+        let span = document.createElement('span');
+        li.prepend(span);
+        span.append(span.nextSibling); // move the text node into span
+    }
+
+    // catch clicks on whole tree
+    tree.onclick = function(event) {
+
+        if (event.target.tagName != 'SPAN') {
+            return;
+        }
+
+        let childrenContainer = event.target.parentNode.querySelector('ul');
+        if (!childrenContainer) return; // no children
+
+        childrenContainer.hidden = !childrenContainer.hidden;
+    }
+</script>
+</body>
+</html>

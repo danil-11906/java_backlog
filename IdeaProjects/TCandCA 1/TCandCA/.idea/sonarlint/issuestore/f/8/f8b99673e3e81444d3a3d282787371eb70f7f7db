@@ -1,0 +1,48 @@
+
+`	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(ïÉ‰¿şÿÿÿÿ
+`	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(¼ò¶êûÿÿÿÿ
+2
+java:S1643"Use a StringBuilder instead.(áÁò
+f	java:S117("QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àĞ
+f	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â½¼ò
+f	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÖãÿ
+y
+java:S1488!"^Immediately return this expression instead of assigning it to the temporary variable "result".(Óó•şøÿÿÿÿ
+u
+java:S14888"_Immediately return this expression instead of assigning it to the temporary variable "keyPair".(­…Ô«
+y
+java:S1488@"^Immediately return this expression instead of assigning it to the temporary variable "pubKey".(–Ó¹Ùşÿÿÿÿ
+y
+java:S1488H"^Immediately return this expression instead of assigning it to the temporary variable "priKey".(´¤é úÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(×¼­Æ
+š
+java:S1130"}Remove the declaration of thrown exception 'java.io.UnsupportedEncodingException', as it cannot be thrown from method's body.(‘™´Û8óò«äÊ/
+J
+java:S6212"/Declare this local variable with "var" instead.(ñ´„®ûÿÿÿÿ
+E
+java:S6212"/Declare this local variable with "var" instead.(ñõÂ‰
+E
+java:S6212*"/Declare this local variable with "var" instead.(ÄÖãÿ
+E
+java:S62125"/Declare this local variable with "var" instead.(×¦ˆ£
+E
+java:S62126"/Declare this local variable with "var" instead.(¶ø¶£
+E
+java:S62128"/Declare this local variable with "var" instead.(­…Ô«
+S
+java:S1197="8Move the array designator from the variable to the type.(ïÉ‰¿şÿÿÿÿ
+J
+java:S6212>"/Declare this local variable with "var" instead.(šÈ¥ÿÿÿÿÿ
+D
+java:S6212?"/Declare this local variable with "var" instead.(ÚÂìo
+S
+java:S1197E"8Move the array designator from the variable to the type.(¼ò¶êûÿÿÿÿ
+E
+java:S6212F"/Declare this local variable with "var" instead.(õÛ¾
+D
+java:S6212G"/Declare this local variable with "var" instead.(ÚÂìo
+E
+java:S6212M"/Declare this local variable with "var" instead.(ƒÎ×Ô
+E
+java:S6212T"/Declare this local variable with "var" instead.(ƒÎ×Ô

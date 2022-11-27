@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="widget.css">
+</head>
+<body>
+<body>
+
+<div class="button" id="button">Открыть виджет</div>
+
+<script>
+    document.getElementById("button").onclick = function () {
+
+        //----------------------------------------------------------------------------------------  скрываем кнопку
+        button.style.display = 'none';
+
+        //----------------------------------------------------------------------------------------  создаем блок формы
+        var widget_popup = document.createElement('div');
+        widget_popup.className = "widget_popup";
+        document.body.insertBefore(widget_popup, document.body.firstChild);
+
+        var form_container = document.createElement('form_container');
+        form_container.className = "form_container";
+        widget_popup.appendChild(form_container);
+
+        //----------------------------------------------------------------------------------------  заголовок
+        var text = document.createElement('h4');
+        text.innerHTML = 'Форма регистрации №42';
+        form_container.appendChild(text);
+
+        //----------------------------------------------------------------------------------------  поле ввода имени
+        var name = document.createElement('input');
+        name.className = 'name';
+        name.id = 'name'
+        name.innerHTML = "ФИО :";
+        name.placeholder = "Введите Ваше имя";
+        name.type = "text";
+        form_container.appendChild(name);
+
+        //----------------------------------------------------------------------------------------  поле для выбора страны проживания
+        var country = document.createElement('select');
+        country.className = "country";
+        country.id = 'country'
+
+        //----------------------------------------------------------------------------------------  Добавляем в список страны
+        var inputsArr = [
+            ["Страна проживания :", "0"],
+            ["Австралия", "australia"],
+            ["Индия", "india"],
+            ["Непал", "nepal"],
+            ["Россия", "russia"],
+            ["Швецария", "switzerland"],
+            ["Эстония", "estonia"]
+        ];
+        var num = 1;
+
+        /*----------------------------------------------------------------------------------------  на фокусе создаем список и выбираем страну
+                                                                                                    (страны, куда вставляем список, дефолтное значение)*/
+        country.onfocus = BuildSelect(inputsArr, country, '0');
+        form_container.appendChild(country);
+
+        function BuildSelect(inputsArr, htmlSelect, selected) {
+            var length = inputsArr.length,
+                opt = null,
+                i = 0;
+
+            for (; i < length; i += 1) {
+                opt = new Option(inputsArr[i][0], inputsArr[i][1]);
+
+                if (inputsArr[i][1] === selected) {
+                    opt.selected = "selected";
+                }
+
+                htmlSelect.options.add(opt, i);
+            }
+            return true;
+        }
+
+
+        //----------------------------------------------------------------------------------------  поле ввода телефона
+        var phone = document.createElement('input');
+        phone.className = "phone";
+        phone.id = "phone"
+        phone.innerHTML = "Телефон";
+        phone.placeholder = "Введите номер телефона";
+        phone.type = "text";
+        form_container.appendChild(phone);
+
+
+        //----------------------------------------------------------------------------------------  поле ввода почты
+        var email = document.createElement('input');
+        phone.className = "email";
+        phone.id = "email"
+        email.innerHTML = "Email";
+        email.placeholder = "Введите Ваш e-mail";
+        email.type = "text";
+        form_container.appendChild(email);
+
+        //----------------------------------------------------------------------------------------  добавление кнопки "Отправить"
+        var submit = document.createElement('button');
+        submit.innerHTML = "Отправить";
+        submit.placeholder = "Отправить";
+        submit.type = "submit";
+        form_container.appendChild(submit);
+        submit.onclick = send_info;
+
+        //----------------------------------------------------------------------------------------  добавление кнопки "Закрыть"
+        var close = document.createElement('button');
+        close.innerHTML = "Закрыть";
+        close.placeholder = "Закрыть";
+        close.type = "button";
+        form_container.appendChild(close);
+
+        close.onclick = function () {
+            widget_popup.parentNode.removeChild(widget_popup);
+            button.style.display = 'block';
+        }
+
+        document.body.style.overflowY = 'hidden';
+        widget_popup.style.display = 'block';
+        var num = 1;
+
+        //----------------------------------------------------------------------------------------  обработка ввода имени пользователя
+        name.onblur = function () {
+            if (!check_name(this.value)) {
+                this.classList.add("error");
+                name.focus();
+                num++;
+            } else {
+                this.classList.remove("error");
+                num = 0;
+            }
+
+            function check_name(name) {
+                var rName = /^[a-zA-Zа-яА-Я][a-zA-Zа-яА-Я-]{1,42}$/;
+                return rName.test(name);
+            }
+        };
+
+        //----------------------------------------------------------------------------------------  обработка ввода телефона
+        phone.onblur = function () {
+            if (!check_phone(this.value)) {
+                this.classList.add("error");
+                phone.focus();
+                num++;
+            } else {
+                this.classList.remove("error");
+                num=0;
+            }
+
+            function check_phone(phone) {
+                var rPhone = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/
+                return (rPhone.test(phone));
+            }
+        };
+
+        //----------------------------------------------------------------------------------------  обработка ввода почты
+        email.onblur = function () {
+            if (!check_email(this.value)) {
+                this.classList.add("error");
+                email.focus();
+                num++;
+            } else {
+                this.classList.remove("error");
+                num=0;
+            }
+
+            function check_email(email) {
+                var rEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+                return (rEmail.test(email));
+            }
+        };
+
+
+        // function send() {
+        //     //проверяем наличие ошибок
+        //     var e = "error";
+        //     var have_error = (name.className.includes(e)) || (phone.className.includes(e)) || (email.className.includes(e));
+        //
+        //     var index = country.options.selectedIndex;
+        //     var country = country.options[index].value;
+        //
+        //     //осталось ли какое-то поле незаполненным
+        //     var field_filled = (name.value === "") || (phone.value === "") || ((email.value === "")) || (country.includes("0"));
+        //
+        //     if (have_error || field_filled) {
+        //         if (have_error) {
+        //             alert("Данные введены некорректно");
+        //         } else {
+        //             alert('Необходимо заполнить все поля')
+        //         }
+        //     } else {
+        //         send_info();
+        //     }
+        // }
+
+
+        var field_filled = (name.value === "") || (phone.value === "") || ((email.value === "")) || (country.includes("0"));
+        var e = "error";
+        var have_error = (name.className.includes(e)) || (phone.className.includes(e)) || (email.className.includes(e));
+
+        //----------------------------------------------------------------------------------------  ответ формы и вывод информации
+        function send_info() {
+            // if (have_error || field_filled) {
+            //     alert("Заполните форму корректно")
+            // } else {
+            //скрываем поля ввода
+            form_container.style.display = 'none';
+
+            //создаем новое поле где будем писать ответ
+            if (num === 0) {
+                var ans = document.createElement('div');
+                ans.className = "answer";
+                widget_popup.appendChild(ans);
+
+                var index = country.options.selectedIndex;
+                ans.innerHTML = '<p>Имя :' + name.value + '!</p>' +
+                    '<p>Номер телефона :' + phone.value + '</p>' +
+                    '<p>E-mail : ' + email.value + '</p>' +
+                    '<p>Страна проживания :' + country.options[index].text + '</p>';
+            } else {
+                alert("Что то не так введено");
+            }
+
+            //кнопка закрытия
+            var close = document.createElement('div');
+            ans.appendChild(close);
+            close.innerHTML = "Закрыть";
+            close.className = "close"
+            form_container.parentNode.removeChild(form_container);
+
+            close.onclick = function () {
+                widget_popup.parentNode.removeChild(widget_popup);
+                button.style.display = 'block';
+            }
+        }
+        // }
+    };
+</script>
+
+</body>
+</body>
+</html>

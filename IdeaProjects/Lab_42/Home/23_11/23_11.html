@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Название документа</title>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        * {box-sizing: border-box;}
+
+        .open-button {
+        background-color: #2196F3;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+        }
+
+        .form-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+
+        }
+
+        .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+
+        }
+
+        .form-container input[type=text], .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+        }
+
+        .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+        }
+
+        .form-container .btn {
+        background-color: #1976D2;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom:10px;
+        opacity: 0.8;
+        font-size: 15px;
+        font-weight: bold;
+        }
+
+        .form-container .cancel {
+        background-color: #448AFF;
+        }
+
+        .form-container .btn:hover, .open-button:hover {
+        opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+<button class="open-button" onclick="openForm()">Нажмите</button>
+
+<!--<div class="form-popup" id="myForm">-->
+<!--    <form class="form-container">-->
+<!--        <h1>Заполните</hyf1>-->
+
+<!--        <div>-->
+<!--            <b>Имя</b>-->
+<!--            <input type="text" class="name field" placeholder="Ваше имя" id="name" required>-->
+<!--        </div>-->
+
+<!--        <div>-->
+<!--            <b>Фамилия</b>-->
+<!--            <input type="text" class="surname field" placeholder="Ваша Фамилия" id="surname" required>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <b>Отчество</b>-->
+<!--            <input type="text" class="second_name field" placeholder="Ваше Отчество" id="second name" required>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <b>E-mail</b>-->
+<!--            <input type="text" class="e-mail field" placeholder="Ваш E-mail" id="e-mail" required>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <b>Номер телефона</b>-->
+<!--            <input type="text" class="phone field" placeholder="Ваш номер телефона" name="phone" id="phone" required>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <select name="town" class="select field" id="s1">-->
+<!--                <option value="Россия" >Россия</option>-->
+<!--                <option value="Китай">Китай</option>-->
+<!--                <option value="США">США</option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn" onclick="f()">Отправить</button>-->
+<!--        <button type="button" class="btn cancel" onclick="closeForm()">Закрыть</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<script>
+    function f(){
+        document.addEventListener('submit', function (event){
+            event.preventDefault();
+        })
+        var surname = document.getElementById('surname').value;
+        var secname = document.getElementById('second name').value;
+        var name = document.getElementById('name').value;
+        var phone = document.getElementById('phone').value;
+        var email = document.getElementById('e-mail').value;
+        var num = 0;
+        var regemail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/
+        var regph = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/
+        var reg = /[a-zA-Z]/
+        if (!name.match(reg)) {
+            alert('Вы ввели неправильно имя');
+            num++;
+        }
+        if (!surname.match(reg)) {
+            alert('Вы ввели неправильно фамилию');
+            num++;
+        }
+        if (!secname.match(reg)) {
+            alert('Вы ввели неправильно отчкество');
+            num++;
+        }
+        if (!email.match(regemail)) {
+            alert('Вы ввели неправильно мыло');
+            num++;
+        }
+        if (!phone.match(regph)) {
+            alert('Вы ввели неправильно телефон');
+            num++;
+        }
+        if (num == 0) {
+            let Elem = document.createElement('div');
+            Elem.className = 'return';
+            Elem.innerHTML = "Фамилия: " + document.getElementById('surname').value +
+                "\n Имя: " + document.getElementById('name').value +
+                "\n Отчество: " + document.getElementById('second name').value +
+                "\n E-mail: " + document.getElementById('e-mail').value +
+                "\n Выбран " + document.getElementById('s1').value +
+                "\n Телефон: " + document.getElementById('phone').value;
+            document.querySelector('.open-button').parentElement.insertBefore(Elem,document.querySelector('.form-popup'));
+        } else {
+            alert('Введите плиз данные заново')
+        }
+
+    }
+    function openForm() {
+        // document.getElementById("myForm").style.display = "block";
+        // document.querySelector('.open-button').style.display = 'none';
+
+        var widget_popup = document.createElement('div');
+        widget_popup.className = "form-popup";
+        // widget_popup.display= none;
+        // widget_popup.position= fixed;
+        // widget_popup.bottom= 0;
+        // widget_popup.right= 15px;
+        // border: 3px solid #f1f1f1;
+        // z-index: 9;
+        widget_popup.id="myForm";
+        document.body.insertBefore(widget_popup, document.body.firstChild);
+
+        var form_container = document.createElement('form_container');
+        form_container.className = "form_container";
+        widget_popup.appendChild(form_container);
+
+        var text = document.createElement('p');
+        text.innerHTML = 'Регистрация';
+        text.style.margin = '5px';
+        text.style.fontSize = '18px';
+        text.style.fontWeight = 'bold';
+        form_container.appendChild(text);
+
+        var name = document.createElement('input');
+        name.type="text";
+        name.className="name field";
+        name.placeholder="Ваше имя";
+        name.id="name";
+        name.required;
+        form_container.appendChild(name);
+
+        var surname = document.createElement('input');
+        surname.type="text";
+        surname.className="surname field";
+        surname.placeholder="Ваша Фамилия";
+        surname.id="surname";
+        surname.required;
+        form_container.appendChild(surname);
+
+        var  secondName = document.createElement('input');
+        secondName.type="text";
+        secondName.className="second_name field";
+        secondName.placeholder="Ваше Отчество";
+        secondName.id="second name";
+        secondName.required;
+        form_container.appendChild(secondName);
+
+        var email = document.createElement('input');
+        email.type="text";
+        email.className="e-mail field";
+        email.placeholder="Ваш E-mail";
+        email.id="e-mail";
+        email.required;
+        form_container.appendChild(email);
+
+        var phone = document.createElement('input');
+        phone.type="text";
+        phone.className="phone field";
+        phone.placeholder="Ваш номер телефона";
+        phone.id="phone";
+        phone.required;
+        form_container.appendChild(phone);
+
+        var select = document.createElement('select');
+        select.name="town";
+        select.className="select field";
+        select.id="s1";
+        var option1 = document.createElement('option');
+        option1.value="Россия";
+        var option2 = document.createElement('option');
+        option2.value="Китай";
+        var option3 = document.createElement('option');
+        option3.value="США";
+        select.appendChild(option1);
+        select.appendChild(option2);
+        select.appendChild(option3);
+        form_container.appendChild(select);
+
+        var submit = document.createElement('button');
+        submit.type="submit";
+        submit.className="btn";
+
+        submit.onclick=f;
+        form_container.appendChild(submit);
+
+        var button = document.createElement('button');
+        button.type="button";
+        button.className="btn cancel";
+        button.name='Отмена';
+        button.onclick=closeForm;
+        form_container.appendChild(button);
+
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+</script>
+</body>
+</html>

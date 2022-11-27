@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="TCandCA 2">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/TCandCA/src/main/java" />
+    </SOURCES>
+  </library>
+</component>

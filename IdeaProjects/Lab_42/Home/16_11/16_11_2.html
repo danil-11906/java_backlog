@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>JS_HW9</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="line" id="line" style="background: orange; width: 60px; height: 50px;"></div>
+
+<script>
+    function addOnWheel(elem, handler) {
+        if (elem.addEventListener) {
+            if ('onmousewheel' in document) {
+                elem.addEventListener("mousewheel", handler);
+            }
+        }
+    }
+    var rect = document.getElementById('line');
+    addOnWheel(line, function(e) {
+        var delta = e.deltaY || e.detail || e.wheelDelta;
+
+        if (delta > 0){
+            var dist = 2;
+            var newWidth = Math.max(10, rect.offsetWidth + dist);
+            rect.style.width = newWidth + "px";
+        }
+        else{
+            var dist = 2;
+            var newWidth = Math.max(10, rect.offsetWidth - dist);
+            rect.style.width = newWidth + "px";
+        }
+        e.preventDefault();
+    });
+</script>
+</body>
+</html>

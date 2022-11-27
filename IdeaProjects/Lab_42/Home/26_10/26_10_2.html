@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="newTree" id="newTree">
+    <li><span>Отдел web-разработки</span>
+        <ul>
+            <li><span>Junior</span>
+                <ul>
+                    <li>Иванов И.И.</li>
+                    <li>Сидоров С.С.</li>
+                    <li>Петров П.П.</li>
+                </ul>
+            </li>
+            <li><span>Middle</span>
+                <ul>
+                    <li>Кодов К.К.</li>
+                    <li>Текстов П.П.</li>
+                    <li>Пробелов З.З.</li>
+                </ul>
+            </li>
+            <li><span>Senior</span>
+                <ul>
+                    <li>Штормов А.А</li>
+                    <li>Саблаймов С.С.</li>
+                    <li>Атомов З.З.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><span>Отдел тестирования</span>
+        <ul>
+            <li><span>Junior</span>
+                <ul>
+                    <li>Тестов Т.Т.</li>
+                    <li>Багов Б.Б.</li>
+                </ul>
+            </li>
+            <li><span>Middle</span>
+                <ul>
+                    <li>Ошибкин О.О</li>
+                    <li>Багов Б.Б.</li>
+                    <li>Селениумов С.С.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+<script>
+    newTree.onclick = function (value) {
+        let element = value.target.tagName;//узнать HTML-тег
+        let children = value.target.parentNode.querySelector("ul");
+        if (element !== 'SPAN') {
+            return;
+        }
+        if (!children) return; //без узла
+        children.hidden = !children.hidden;
+    }
+</script>
+</html>
